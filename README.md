@@ -80,3 +80,9 @@ $env:NREL_API_KEY="ISI_API_KEY_ANDA_DI_SINI"
 - BESS digunakan hanya untuk ramp-rate smoothing, bukan energy shifting, arbitrase, frequency regulation, reserve, atau peak shaving.
 - Indikator CO2eq bersifat indikatif, bukan klaim pengurangan emisi aktual atau carbon credit.
 - File lama/debug disimpan di `archive/` hanya untuk rekam jejak, bukan untuk pipeline utama.
+
+## Acknowledgments
+The code in this repository is based on the methodology developed by David Pinney in the [SoDa repository](https://github.com/dpinney/SoDa). 
+
+- **Original Author:** David Pinney
+- **License:** The original work is licensed under the [MIT License](https://github.com/dpinney/SoDa?tab=MIT-1-ov-file), which has been included in this repository.
