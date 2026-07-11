@@ -82,7 +82,8 @@ $env:NREL_API_KEY="ISI_API_KEY_ANDA_DI_SINI"
 - File lama/debug disimpan di `archive/` hanya untuk rekam jejak, bukan untuk pipeline utama.
 
 ## Acknowledgments
-The code in this repository is based on the methodology developed by Ignacio-Losada in the [SoDa repository](https://github.com/dpinney/SoDa). 
+The code in this repository is based on the methodology developed by Ignacio-Losada. I have used the codebase from the [SoDa repository](https://github.com/dpinney/SoDa), which serves as the reference implementation for this work.
 
 - **Original Author:** Ignacio-Losada
-- **License:** The original work is licensed under the [MIT License](https://github.com/dpinney/SoDa?tab=MIT-1-ov-file), which has been included in this repository.
+- **Reference Repository:** [dpinney/SoDa](https://github.com/dpinney/SoDa)
+- **License:** The referenced work is licensed under the [MIT License](https://github.com/dpinney/SoDa?tab=MIT-1-ov-file), a copy of which is included in this repository.
