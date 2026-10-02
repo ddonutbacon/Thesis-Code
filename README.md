@@ -1,12 +1,12 @@
 # Thesis BESS-SoDa Workflow
 
-Repository ini berisi skrip Python yang digunakan untuk tesis:
+This repository contains the Python scripts used for the thesis:
 
-**Evaluasi dan Optimasi Kapasitas Battery Energy Storage System untuk Pengendalian Ramp-rate PLTS 100 MW Berbasis Profil Daya Sintetik SoDa**
+**Evaluation and Optimal Sizing of Battery Energy Storage Systems for Ramp-rate Control in a 100 MW Solar Power Plant Using Synthetic SoDa Power Profiles**
 
-Repositori ini disusun sebagai paket kode yang dapat diaudit ulang. Alur utama mengikuti buku tesis final: pembangkitan profil daya PV sintetik SoDa, pemeriksaan kewajaran terhadap NASA POWER, optimasi kapasitas BESS dengan deterministic grid search, analisis sensitivitas ekonomi, indikator lingkungan, persiapan input DIgSILENT, dan pembanding PSO berbasis Deb's Feasibility Rules.
+This repository is structured as a re-auditable code package. The main workflow aligns with the final thesis book: synthetic SoDa PV power profile generation, sanity check against NASA POWER, BESS capacity optimization via deterministic grid search, economic sensitivity analysis, environmental indicators, DIgSILENT input preparation, and a PSO baseline comparison using Deb's Feasibility Rules.
 
-## Struktur
+## Structure
 
 ```text
 thesis-bess-soda-github-ready/
@@ -33,53 +33,53 @@ thesis-bess-soda-github-ready/
    └─ 08_economic_sensitivity_rerun_optimization_grid_pso.py
 ```
 
-## Skrip utama
+## Main Scripts
 
 1. `01_generate_soda_profile.py`  
-   Membuat profil daya PV sintetik SoDa tahun 2020 resolusi 1 menit.
+   Generates the 1-minute resolution 2020 synthetic SoDa PV power profile.
 
 2. `02_check_soda_nasa_consistency.py`  
-   Memeriksa kewajaran energi bulanan SoDa terhadap NASA POWER.
+   Performs a sanity check comparing monthly SoDa energy against NASA POWER.
 
 3. `03_optimize_bess_grid_search.py`  
-   Skrip utama optimasi kapasitas BESS menggunakan deterministic grid search untuk R20, R10, R5, dan R3.
+   Main script for BESS capacity optimization using deterministic grid search for R20, R10, R5, and R3 scenarios.
 
 4. `04_economic_sensitivity_r5.py`  
-   Analisis sensitivitas ekonomi R5 tanpa re-optimasi kapasitas.
+   Economic sensitivity analysis for R5 without re-optimizing capacity.
 
 5. `05_prepare_digsilent_inputs.py`  
-   Menyiapkan time characteristic PV dan BESS untuk DIgSILENT berdasarkan hasil R5.
+   Prepares PV and BESS time characteristics for DIgSILENT based on R5 results.
 
 6. `06_environmental_indicator.py`  
-   Menghitung indikator CO2 ekuivalen indikatif berdasarkan annual discharge BESS.
+   Calculates indicative CO₂ equivalent indicators based on annual BESS discharge.
 
 7. `07_optimize_bess_pso_deb_rules.py`  
-   Pembanding PSO final berbasis Deb's Feasibility Rules, multi-seed, dan resolusi kandidat 4 desimal.
+   Final PSO comparison script incorporating Deb's Feasibility Rules, multi-seed execution, and 4-decimal candidate resolution.
 
 8. `08_master_summary_for_bab4.py`  
-   Helper untuk mengumpulkan output utama menjadi ringkasan Bab 4.
+   Helper script to aggregate primary outputs into the Chapter 4 summary.
 
-## Catatan keamanan
+## Security Notes
 
-API key NSRDB/NREL tidak disimpan di kode. Sebelum menjalankan generator SoDa, set environment variable:
+NSRDB/NREL API keys are not stored in the source code. Before running the SoDa generator, set the environment variable:
 
 ```bat
-set NREL_API_KEY=ISI_API_KEY_ANDA_DI_SINI
+set NREL_API_KEY=YOUR_API_KEY_HERE
 ```
 
 Pada PowerShell:
 
 ```powershell
-$env:NREL_API_KEY="ISI_API_KEY_ANDA_DI_SINI"
+$env:NREL_API_KEY="YOUR_API_KEY_HERE"
 ```
 
-## Batasan
+## Limitations
 
-- Profil SoDa adalah profil sintetik untuk studi pra-kelayakan, bukan data pengukuran aktual lapangan.
-- NASA POWER digunakan sebagai referensi pola klimatologi bulanan, bukan ground truth daya PV resolusi satu menit.
-- BESS digunakan hanya untuk ramp-rate smoothing, bukan energy shifting, arbitrase, frequency regulation, reserve, atau peak shaving.
-- Indikator CO2eq bersifat indikatif, bukan klaim pengurangan emisi aktual atau carbon credit.
-- File lama/debug disimpan di `archive/` hanya untuk rekam jejak, bukan untuk pipeline utama.
+- SoDa profiles are synthetic profiles intended for pre-feasibility studies, not actual field measurement data.
+- NASA POWER is utilized as a reference for monthly climatological patterns, not as ground truth for 1-minute resolution PV power.
+- The BESS is evaluated strictly for ramp-rate smoothing—not for energy shifting, arbitrage, frequency regulation, spinning reserve, or peak shaving.
+- CO2eq indicators are indicative only and do not constitute claims of actual emission reductions or carbon credits.
+- Legacy/debug files are preserved in archive/ solely for historical tracking and are not part of the primary pipeline.
 
 ## Acknowledgments
 The code in this repository is based on the methodology developed by Ignacio-Losada. I have used the codebase from the [SoDa repository](https://github.com/dpinney/SoDa), which serves as the reference implementation for this work.
